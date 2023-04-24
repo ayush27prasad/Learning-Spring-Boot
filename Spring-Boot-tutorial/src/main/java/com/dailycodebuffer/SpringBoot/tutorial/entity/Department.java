@@ -1,6 +1,15 @@
 package com.dailycodebuffer.SpringBoot.tutorial.entity;
 
+import javax.annotation.processing.Generated;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Department {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long departmentId;
     private String departmentName;
     private String departmentAddress;
@@ -47,6 +56,7 @@ public class Department {
 
     public Department() {
     }
+
     @Override
     public String toString() {
         return "Department{" +
