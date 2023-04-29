@@ -1,6 +1,7 @@
 package com.dailycodebuffer.SpringBoot.tutorial.service;
 
 import com.dailycodebuffer.SpringBoot.tutorial.entity.Department;
+import com.dailycodebuffer.SpringBoot.tutorial.error.DepartmentNotFoundException;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ public interface DepartmentService {
 
     public Department saveDepartment(Department department);
 
-    public Department fetchDepartmentbyID(Long departmentId);
+    public Department fetchDepartmentbyID(Long departmentId) throws DepartmentNotFoundException;
 
     public Department updateDepartment(Long departmentId, Department department);
 
