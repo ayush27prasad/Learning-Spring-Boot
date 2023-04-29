@@ -3,10 +3,7 @@ package com.dailycodebuffer.SpringBoot.tutorial.controller;
 import com.dailycodebuffer.SpringBoot.tutorial.entity.Department;
 import com.dailycodebuffer.SpringBoot.tutorial.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +22,30 @@ public class DepartmentController {
     public List<Department> fetchDepartmentList(){
         return departmentService.fetchDepartmentList();
     }
+
+    @GetMapping("/departments/{id}")
+    public Department fetchDepartmentById(@PathVariable("id") Long departmentId){
+        return departmentService.fetchDepartmentbyID(departmentId);
+    }
+
+    @DeleteMapping("/departments/{id}")
+    public String deleteDepartmentById(@PathVariable("id") Long departmentId){
+        departmentService.deleteDepartmentbyID(departmentId);
+        return "Department deleted Successfully!!";
+    }
+
+    @PutMapping("/departments/{id}")
+    public Department updateDepartment(@PathVariable("id") Long departmentId ,
+                                        Department department){
+        return departmentService.updateDepartment(departmentId,department);
+    }
+
+    @GetMapping("/departments/name/{name}")
+    public Department fetchDepartmentByName(@PathVariable("name") String departmentName){
+        return departmentService.fetchDepartmentByName(departmentName);
+    }
+
+
+
 
 }
